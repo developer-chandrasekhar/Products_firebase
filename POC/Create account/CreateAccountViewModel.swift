@@ -18,9 +18,11 @@ final class CreateAccountViewModel: ObservableObject {
     @Published public var flow: AuthenticationFlow = .signUp
     public var errorMessage: String = ""
     private let authService: AuthService
-    
-    init(authService: AuthService = AuthWebService()) {
+    private let userService: UserService
+
+    init(authService: AuthService = AuthWebService(), userService: UserWebService = UserWebService()) {
         self.authService = authService
+        self.userService = userService
         localFlowValidation()
     }
     
@@ -39,6 +41,7 @@ extension CreateAccountViewModel {
         authenticationState = .authenticating
         do  {
            let user = try await authService.createUser(email: email, password: password)
+            let userModel = try await userService.createUserProfile(user: UserModel(userId: user.uid, email: user.email, phoneNumber: "123456789", photoUrl: "https://github.com/developer-chandrasekhar/develop-sample-images/blob/main/notification-image.png"))
             return true
         }
         catch {

@@ -9,21 +9,6 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 
-struct UserModel: Codable {
-    
-    let userId: String
-    let email: String?
-    let phone: String?
-    let photoUrl: String?
-    
-    init(userId: String, email: String?, phone: String?, photoUrl: String?) {
-        self.userId = userId
-        self.email = email
-        self.phone = phone
-        self.photoUrl = photoUrl
-    }
-}
-
 enum UserAuthError: Error {
     case notAuthenticated
 }

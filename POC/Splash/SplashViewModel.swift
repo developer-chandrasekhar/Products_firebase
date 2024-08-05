@@ -16,9 +16,11 @@ final class SplashViewModel: ObservableObject {
     public var errorMessage = ""
     private var authStateHandler: AuthStateDidChangeListenerHandle?
     private let authService: AuthService
-    
-    init(authService: AuthService = AuthWebService()) {
+    private let userService: UserService
+
+    init(authService: AuthService = AuthWebService(), userService: UserWebService = UserWebService()) {
         self.authService = authService
+        self.userService = userService
     }
 }
 
@@ -34,7 +36,13 @@ extension SplashViewModel {
         Task {
             do {
                 let user = try await authService.validateUser()
-                root(user != nil ? .home : .login)
+                if let user {
+                   let user = try await userService.getUserProfile(userId: user.uid)
+                    root(.home)
+                }
+                else {
+                    root(.login)
+                }
             }
             catch _ as UserAuthError {
                 root(.login)
