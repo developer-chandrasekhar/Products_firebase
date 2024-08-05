@@ -30,7 +30,6 @@ final class LoginViewModel: ObservableObject {
     @Published public var isValid: Bool  = false
     @Published public var authenticationState: AuthenticationState = .unauthenticated
     @Published public var displayName: String = ""
-    @Published public var user: UserModel?
     @Published public var flow: AuthenticationFlow = .login
     public var errorMessage: String = ""
 
@@ -57,7 +56,7 @@ extension LoginViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do {
-            user = try await authService.signInUser(email: email, password: password)
+            let user = try await authService.signInUser(email: email, password: password)
             return true
         }
         catch  {

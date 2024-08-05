@@ -12,7 +12,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
       "stock": 5,
-      "rating": 4.94
+      "rating": 4.94,
+      "available_location": "india"
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
       "stock": 44,
-      "rating": 3.28
+      "rating": 3.28,
+      "available_location": "us"
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/thumbnail.png",
       "stock": 59,
-      "rating": 3.82
+      "rating": 3.82,
+      "available_location": "us"
     },
     {
       "id": 4,
@@ -54,7 +57,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
       "stock": 68,
-      "rating": 2.51
+      "rating": 2.51,
+      "available_location": "us"
     },
     {
       "id": 5,
@@ -68,7 +72,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Nail%20Polish/thumbnail.png",
       "stock": 71,
-      "rating": 3.91
+      "rating": 3.91,
+      "available_location": "india"
     },
     {
       "id": 6,
@@ -84,7 +89,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/thumbnail.png",
       "stock": 17,
-      "rating": 4.85
+      "rating": 4.85,
+      "available_location": "us"
     },
     {
       "id": 7,
@@ -100,7 +106,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Chanel%20Coco%20Noir%20Eau%20De/thumbnail.png",
       "stock": 41,
-      "rating": 2.76
+      "rating": 2.76,
+      "available_location": "us"
     },
     {
       "id": 8,
@@ -116,7 +123,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/thumbnail.png",
       "stock": 91,
-      "rating": 3.31
+      "rating": 3.31,
+      "available_location": "us"
     },
     {
       "id": 9,
@@ -132,7 +140,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Dolce%20Shine%20Eau%20de/thumbnail.png",
       "stock": 3,
-      "rating": 2.68
+      "rating": 2.68,
+      "available_location": "india"
     },
     {
       "id": 10,
@@ -148,7 +157,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/thumbnail.png",
       "stock": 93,
-      "rating": 2.69
+      "rating": 2.69,
+      "available_location": "us"
     },
     {
       "id": 11,
@@ -164,7 +174,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/thumbnail.png",
       "stock": 47,
-      "rating": 4.14
+      "rating": 4.14,
+      "available_location": "us"
     },
     {
       "id": 12,
@@ -180,7 +191,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Sofa/thumbnail.png",
       "stock": 16,
-      "rating": 3.08
+      "rating": 3.08,
+      "available_location": "us"
     },
     {
       "id": 13,
@@ -196,7 +208,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/thumbnail.png",
       "stock": 16,
-      "rating": 4.48
+      "rating": 4.48,
+      "available_location": "us"
     },
     {
       "id": 14,
@@ -212,7 +225,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/thumbnail.png",
       "stock": 47,
-      "rating": 4.11
+      "rating": 4.11,
+      "available_location": "us"
     },
     {
       "id": 15,
@@ -228,7 +242,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Wooden%20Bathroom%20Sink%20With%20Mirror/thumbnail.png",
       "stock": 95,
-      "rating": 3.26
+      "rating": 3.26,
+      "available_location": "us"
     },
     {
       "id": 16,
@@ -241,7 +256,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Apple/thumbnail.png",
       "stock": 9,
-      "rating": 2.96
+      "rating": 2.96,
+      "available_location": "us"
     },
     {
       "id": 17,
@@ -254,7 +270,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Beef%20Steak/thumbnail.png",
       "stock": 96,
-      "rating": 2.83
+      "rating": 2.83,
+      "available_location": "us"
     },
     {
       "id": 18,
@@ -267,7 +284,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cat%20Food/thumbnail.png",
       "stock": 13,
-      "rating": 2.88
+      "rating": 2.88,
+      "available_location": "us"
     },
     {
       "id": 19,
@@ -281,7 +299,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Chicken%20Meat/thumbnail.png",
       "stock": 69,
-      "rating": 4.61
+      "rating": 4.61,
+      "available_location": "us"
     },
     {
       "id": 20,
@@ -294,7 +313,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/thumbnail.png",
       "stock": 22,
-      "rating": 4.01
+      "rating": 4.01,
+      "available_location": "us"
     },
     {
       "id": 21,
@@ -307,7 +327,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cucumber/thumbnail.png",
       "stock": 22,
-      "rating": 4.71
+      "rating": 4.71,
+      "available_location": "india"
     },
     {
       "id": 22,
@@ -320,7 +341,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Dog%20Food/thumbnail.png",
       "stock": 40,
-      "rating": 2.74
+      "rating": 2.74,
+      "available_location": "india"
     },
     {
       "id": 23,
@@ -333,7 +355,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Eggs/thumbnail.png",
       "stock": 10,
-      "rating": 4.46
+      "rating": 4.46,
+      "available_location": "india"
     },
     {
       "id": 24,
@@ -346,7 +369,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Fish%20Steak/thumbnail.png",
       "stock": 99,
-      "rating": 4.83
+      "rating": 4.83,
+      "available_location": "india"
     },
     {
       "id": 25,
@@ -359,7 +383,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Green%20Bell%20Pepper/thumbnail.png",
       "stock": 89,
-      "rating": 4.28
+      "rating": 4.28,
+      "available_location": "us"
     },
     {
       "id": 26,
@@ -372,7 +397,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/thumbnail.png",
       "stock": 8,
-      "rating": 4.43
+      "rating": 4.43,
+      "available_location": "india"
     },
     {
       "id": 27,
@@ -385,7 +411,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Honey%20Jar/thumbnail.png",
       "stock": 25,
-      "rating": 3.5
+      "rating": 3.5,
+      "available_location": "india"
     },
     {
       "id": 28,
@@ -401,7 +428,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Ice%20Cream/thumbnail.png",
       "stock": 76,
-      "rating": 3.77
+      "rating": 3.77,
+      "available_location": "india"
     },
     {
       "id": 29,
@@ -414,7 +442,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Juice/thumbnail.png",
       "stock": 99,
-      "rating": 3.41
+      "rating": 3.41,
+      "available_location": "india"
     },
     {
       "id": 30,
@@ -427,7 +456,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png",
       "stock": 1,
-      "rating": 4.37
+      "rating": 4.37,
+      "available_location": "us"
     },
     {
       "id": 31,
@@ -440,7 +470,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Lemon/thumbnail.png",
       "stock": 0,
-      "rating": 4.25
+      "rating": 4.25,
+      "available_location": "india"
     },
     {
       "id": 32,
@@ -453,7 +484,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Milk/thumbnail.png",
       "stock": 57,
-      "rating": 3.14
+      "rating": 3.14,
+      "available_location": "india"
     },
     {
       "id": 33,
@@ -466,7 +498,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Mulberry/thumbnail.png",
       "stock": 79,
-      "rating": 3.19
+      "rating": 3.19,
+      "available_location": "india"
     },
     {
       "id": 34,
@@ -479,7 +512,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Nescafe%20Coffee/thumbnail.png",
       "stock": 22,
-      "rating": 2.54
+      "rating": 2.54,
+      "available_location": "india"
     },
     {
       "id": 35,
@@ -492,7 +526,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Potatoes/thumbnail.png",
       "stock": 8,
-      "rating": 3.82
+      "rating": 3.82,
+      "available_location": "india"
     },
     {
       "id": 36,
@@ -505,7 +540,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Protein%20Powder/thumbnail.png",
       "stock": 65,
-      "rating": 3.91
+      "rating": 3.91,
+      "available_location": "india"
     },
     {
       "id": 37,
@@ -518,7 +554,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Red%20Onions/thumbnail.png",
       "stock": 86,
-      "rating": 4.08
+      "rating": 4.08,
+      "available_location": "india"
     },
     {
       "id": 38,
@@ -531,7 +568,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Rice/thumbnail.png",
       "stock": 49,
-      "rating": 3.94
+      "rating": 3.94,
+      "available_location": "india"
     },
     {
       "id": 39,
@@ -544,7 +582,8 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Soft%20Drinks/thumbnail.png",
       "stock": 78,
-      "rating": 4.59
+      "rating": 4.59,
+      "available_location": "us"
     },
     {
       "id": 40,

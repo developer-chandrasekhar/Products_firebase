@@ -15,7 +15,6 @@ final class CreateAccountViewModel: ObservableObject {
     @Published public var confirmPassword = ""
     @Published public var isValid: Bool  = false
     @Published public var authenticationState: AuthenticationState = .unauthenticated
-    @Published public var user: UserModel?
     @Published public var flow: AuthenticationFlow = .signUp
     public var errorMessage: String = ""
     private let authService: AuthService
@@ -39,7 +38,7 @@ extension CreateAccountViewModel {
     func createAccountWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do  {
-            user = try await authService.createUser(email: email, password: password)
+           let user = try await authService.createUser(email: email, password: password)
             return true
         }
         catch {

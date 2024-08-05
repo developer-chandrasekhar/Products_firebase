@@ -12,43 +12,38 @@ import FirebaseAuth
 @MainActor
 final class SplashViewModel: ObservableObject {
    
-    @Published public var user: UserModel?
     @Published public var showErrorMessage = false
     public var errorMessage = ""
     private var authStateHandler: AuthStateDidChangeListenerHandle?
     private let authService: AuthService
-    private var root = AppRoots.splash
-    
     
     init(authService: AuthService = AuthWebService()) {
         self.authService = authService
-    }
-    
-    public func redirect() {
-        if root != .splash {
-            AppRootManager.manager.currentRoot = root
-        }
     }
 }
 
 extension SplashViewModel {
     public func validateUser() {
+        
+        let root: (AppRoots) -> Void = { root in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                AppRootManager.manager.currentRoot = root
+            }
+        }
+        
         Task {
             do {
-                user = try await authService.validateUser()
-                AppRootManager.manager.currentRoot = .home
+                let user = try await authService.validateUser()
+                root(user != nil ? .home : .login)
             }
             catch _ as UserAuthError {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    AppRootManager.manager.currentRoot = .login
-                }
+                root(.login)
             }
             catch let error as NSError {
                 handleAuthError(error: error)
             }
             catch {
-                errorMessage = "An unknown error occurred: \(error.localizedDescription)"
-                root = .login
+                root(.login)
             }
         }
     }
@@ -57,8 +52,7 @@ extension SplashViewModel {
         if let authErrorCode = AuthErrorCode(rawValue: error.code) {
             switch authErrorCode {
             case .userTokenExpired:
-                root = .login
-                errorMessage = "Session expired. Please sign in again."
+                AppRootManager.manager.currentRoot = .login
             case .networkError:
                 errorMessage = "Network error. Please check your connection."
             case .userNotFound:
