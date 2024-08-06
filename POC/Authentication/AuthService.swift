@@ -17,6 +17,8 @@ protocol AuthService {
     func validateUser() async throws -> User?
     func signInUser(email: String, password: String) async throws -> User
     func createUser(email: String, password: String) async throws -> User
+    func logout() throws
+    func deleteAccount()
 }
 
 struct AuthWebService: AuthService {
@@ -43,5 +45,13 @@ struct AuthWebService: AuthService {
             return authDataResult.user
         }
         catch { throw error }
+    }
+    
+    func logout() throws {
+      try Auth.auth().signOut()
+    }
+    
+    func deleteAccount() {
+         Auth.auth().currentUser?.delete()
     }
 }

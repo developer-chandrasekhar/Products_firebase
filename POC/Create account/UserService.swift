@@ -19,19 +19,21 @@ struct UserModel: Codable {
     let email: String?
     let phoneNumber: String?
     let photoUrl: String?
+    var createdDate: Date?
     
     init(userId: String, email: String?, phoneNumber: String?, photoUrl: String?) {
         self.userId = userId
         self.email = email
         self.phoneNumber = phoneNumber
         self.photoUrl = photoUrl
+        self.createdDate = Date()
     }
-    
     
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case phoneNumber = "phone_number"
         case photoUrl = "photo_url"
+        case createdDate = "crated_date"
         case email
     }
     
@@ -42,6 +44,7 @@ struct UserModel: Codable {
         email = try container.decodeIfPresent(String.self, forKey: .email)
         phoneNumber = try container.decodeIfPresent(String.self, forKey: .phoneNumber)
         photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
+        createdDate = try container.decodeIfPresent(Date.self, forKey: .createdDate)
     }
     
     // Encode to JSON
@@ -51,12 +54,20 @@ struct UserModel: Codable {
         try container.encode(email, forKey: .email)
         try container.encode(phoneNumber, forKey: .phoneNumber)
         try container.encode(photoUrl, forKey: .photoUrl)
+        try container.encode(createdDate, forKey: .createdDate)
+    }
+}
+
+extension UserModel {
+    mutating func setDate() {
+        self.createdDate = Date()
     }
 }
 
 protocol UserService {
     func createUserProfile(user: UserModel) async throws -> UserModel
     func getUserProfile(userId: String) async throws -> UserModel
+    func deleteUser(userId: String) async throws -> Bool
 }
 
 extension UserService {
@@ -85,4 +96,12 @@ struct UserWebService: UserService {
         }
         catch { throw error }
     }
+    
+    func deleteUser(userId: String) async throws -> Bool {
+        do {
+            try await userDocument(userId: userId).delete()
+            return true
+        } catch { throw error }
+    }
+
 }

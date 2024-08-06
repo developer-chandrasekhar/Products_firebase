@@ -10,8 +10,8 @@ import SwiftUI
 struct ProductsHomeView: View {
     
     @ObservedObject var viewModel: ProductsHomeViewModel
-    @State private var xOffset: CGFloat = 0
-    @State private var yOffset: CGFloat = 0
+    @State private var showSettingsScreen = false
+
     let spacing: CGFloat = 10
     
     var productsColumns = [
@@ -52,17 +52,25 @@ struct ProductsHomeView: View {
                 sectionTitleView(title: "Featured Items:")
                     .padding(.bottom, 12)
                 ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: productsColumns, spacing: 4) {
-                        ForEach(viewModel.products.indices, id: \.self) { index in
-                            let product = viewModel.products[index]
-                            productView(product: product)
+                    if viewModel.products.count > 0 {
+                        LazyVGrid(columns: productsColumns, spacing: 4) {
+                            ForEach(viewModel.products.indices, id: \.self) { index in
+                                let product = viewModel.products[index]
+                                productView(product: product)
+                            }
                         }
+                    }
+                    else {
+                        EmptyView()
                     }
                 }
                 Spacer()
             }
             .onAppear {
                 viewModel.getAllProducts()
+            }
+            .navigationDestination(isPresented: $showSettingsScreen) {
+                ProfileSettingsView()
             }
             .navigationBarBackButtonHidden()
         }
@@ -79,7 +87,7 @@ extension ProductsHomeView {
                 .font(FontManager.largeTitle(weight: .bold))
             Spacer()
             Button {
-                
+                showSettingsScreen.toggle()
             } label: {
                 Image(ImageNames.settings_icon)
                     .resizable()
@@ -142,7 +150,7 @@ extension ProductsHomeView {
             .overlay {
                 ZStack(alignment: .topTrailing) {
                     RoundedRectangle(cornerRadius: 25.0)
-                        .fill(Color.black.opacity(0.3))
+                        .fill(Color.black.opacity(0.2))
                     if let rating = product.rating {
                         HStack {
                             //Spacer()

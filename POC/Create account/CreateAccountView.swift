@@ -54,7 +54,7 @@ struct CreateAccountView: View {
             
             Button(action: createAccountWithEmailPassword) {
               if viewModel.authenticationState != .authenticating {
-                Text("Login")
+                Text("Create Account")
                   .padding(.vertical, 8)
                   .frame(maxWidth: .infinity)
               }

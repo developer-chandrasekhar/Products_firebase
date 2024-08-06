@@ -44,10 +44,12 @@ extension ProductsHomeViewModel {
     func filterByCategory(category: String) {
         self.selectedCategory = category
         self.products = []
-        if category == defaultCategory {
-            self.products = self.mainProducts
-            return
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if category == self.defaultCategory {
+                self.products = self.mainProducts
+                return
+            }
+            self.products = self.mainProducts.filter({ $0.category == category })
         }
-        self.products = self.mainProducts.filter({ $0.category == category })
     }
 }
