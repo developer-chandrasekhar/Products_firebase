@@ -12,14 +12,18 @@ final class ProductsHomeViewModel: ObservableObject {
     
     @Published var products: [ProductModel] = []
     @Published var productsCategories: [String] = []
+    @Published var favouriteProducts: [Int] = []
     @Published var selectedCategory = ""
     private var mainProducts: [ProductModel] = []
-    private let productsService: ProductsService
     private var defaultCategory = "All"
-    
-    init(productsService: ProductsService = ProductsWebService()) {
+    private let productsService: ProductsService
+    private let userService: UserService
+
+    init(productsService: ProductsService = ProductsWebService(), userService: UserService = UserWebService()) {
         self.productsService = productsService
+        self.userService = userService
         self.selectedCategory = defaultCategory
+        self.favouriteProducts = SessionManager.shared.user?.favouriteProducts ?? []
     }
 }
 
@@ -50,6 +54,50 @@ extension ProductsHomeViewModel {
                 return
             }
             self.products = self.mainProducts.filter({ $0.category == category })
+        }
+    }
+}
+
+extension ProductsHomeViewModel {
+    
+    func isFavouriteProduct(_ id: Int) -> Bool {
+        return favouriteProducts.contains(id)
+    }
+    
+    func favouriteTapped(_ id: Int) {
+        if isFavouriteProduct(id) {
+            removeFavourite(productId: id)
+        }
+        else {
+            addFavourite(productId: id)
+        }
+    }
+    
+    private func addFavourite(productId: Int) {
+        guard let userId = SessionManager.shared.user?.userId else { return }
+        Task {
+            do {
+                try await userService.addFavouriteProduct(userId: userId, productId: productId)
+                self.favouriteProducts.append(productId)
+                SessionManager.shared.user?.favouriteProducts = self.favouriteProducts
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func removeFavourite(productId: Int) {
+        guard let userId = SessionManager.shared.user?.userId else { return }
+        Task {
+            do {
+                try await userService.removeFavouriteProduct(userId: userId, productId: productId)
+                self.favouriteProducts = self.favouriteProducts.filter({ $0 != productId })
+                SessionManager.shared.user?.favouriteProducts = self.favouriteProducts
+            }
+            catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

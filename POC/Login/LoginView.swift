@@ -16,7 +16,6 @@ struct LoginView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-    @FocusState private var focus: FocusableField?
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     @State var showErrorAlert = false
@@ -40,11 +39,7 @@ struct LoginView: View {
                     TextField("Email", text: $viewModel.email)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
-                        .focused($focus, equals: .email)
                         .submitLabel(.next)
-                        .onSubmit {
-                            self.focus = .password
-                        }
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
@@ -53,11 +48,7 @@ struct LoginView: View {
                 HStack {
                     Image(systemName: "lock")
                     SecureField("Password", text: $viewModel.password)
-                        .focused($focus, equals: .password)
                         .submitLabel(.go)
-                        .onSubmit {
-                            //signInWithEmailPassword()
-                        }
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)

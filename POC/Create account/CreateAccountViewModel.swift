@@ -16,7 +16,7 @@ struct SampleData {
 final class CreateAccountViewModel: ObservableObject {
    
     @Published public var email: String = ""
-    @Published public var password: String = ""
+    @Published public var newPassword: String = ""
     @Published public var confirmPassword = ""
     @Published public var isValid: Bool  = false
     @Published public var authenticationState: AuthenticationState = .unauthenticated
@@ -33,7 +33,7 @@ final class CreateAccountViewModel: ObservableObject {
     
     private func localFlowValidation() {
         $flow
-            .combineLatest($email, $password, $confirmPassword)
+            .combineLatest($email, $newPassword, $confirmPassword)
             .map { flow, email, password, confirmPassword in
                 !(email.isEmpty || password.isEmpty || confirmPassword.isEmpty || (password != confirmPassword))
             }
@@ -45,7 +45,7 @@ extension CreateAccountViewModel {
     func createAccountWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do  {
-           let firUser = try await authService.createUser(email: email, password: password)
+           let firUser = try await authService.createUser(email: email, password: newPassword)
             let user = try await userService.createUserProfile(user: UserModel(userId: firUser.uid, email: firUser.email, phoneNumber: SampleData.userPhoneNumber, photoUrl: SampleData.userProfilePhoto))
             SessionManager.shared.user = user
             return true

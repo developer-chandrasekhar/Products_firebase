@@ -18,7 +18,7 @@ struct ProfileSettingsView: View {
     }
     
     let logoutAccountMessage = "Are you sure, you want to logout?"
-    let deleteAccountMessage = "If you delete your account, your details permanently removed with us after 30 days."
+    let deleteAccountMessage = "If you delete your account, your details permanently removed with us. you can't recover again."
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -74,7 +74,6 @@ struct ProfileSettingsView: View {
                 .font(.system(size: 12))
                 .foregroundColor(.black.opacity(0.7))
         }
-        
     }
 }
 

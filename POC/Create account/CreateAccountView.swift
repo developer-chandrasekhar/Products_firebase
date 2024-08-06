@@ -15,7 +15,6 @@ private enum FocusableField: Hashable {
 
 struct CreateAccountView: View {
     
-    @FocusState private var focus: FocusableField?
     @ObservedObject var viewModel: CreateAccountViewModel = CreateAccountViewModel()
     @Environment(\.dismiss) var dismiss
 
@@ -39,17 +38,13 @@ struct CreateAccountView: View {
                 TextField("Email", text: $viewModel.email)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
-                    .focused($focus, equals: .email)
                     .submitLabel(.next)
-                    .onSubmit {
-                        self.focus = .password
-                    }
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 4)
             
-            passwordField(title: "Password", value: $viewModel.password)
+            passwordField(title: "Password", value: $viewModel.newPassword)
             passwordField(title: "Confirm Password", value: $viewModel.confirmPassword)
             
             Button(action: createAccountWithEmailPassword) {
@@ -88,7 +83,6 @@ struct CreateAccountView: View {
         HStack {
             Image(systemName: "lock")
             SecureField(title, text: value)
-                .focused($focus, equals: .password)
                 .submitLabel(.go)
                 .onSubmit {
                     //signInWithEmailPassword()

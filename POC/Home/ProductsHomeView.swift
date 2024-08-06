@@ -11,7 +11,7 @@ struct ProductsHomeView: View {
     
     @ObservedObject var viewModel: ProductsHomeViewModel
     @State private var showSettingsScreen = false
-
+    
     let spacing: CGFloat = 10
     
     var productsColumns = [
@@ -86,6 +86,16 @@ extension ProductsHomeView {
             Text("?")
                 .font(FontManager.largeTitle(weight: .bold))
             Spacer()
+            Button {
+            } label: {
+                Image(ImageNames.favorite_available)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 44)
+            }
+            .disabled(viewModel.favouriteProducts.count == 0)
+            .opacity(viewModel.favouriteProducts.count == 0 ? 0.5 : 1)
+            .padding(.trailing)
             Button {
                 showSettingsScreen.toggle()
             } label: {
@@ -168,7 +178,6 @@ extension ProductsHomeView {
                         )
                         .padding()
                     }
-                    
                 }
             }
             .padding()
@@ -183,9 +192,9 @@ extension ProductsHomeView {
                     .font(FontManager.caption())
                 Spacer()
                 Button {
-                    
+                    viewModel.favouriteTapped(product.id)
                 } label: {
-                    Image(ImageNames.favorite_stroke)
+                    Image(viewModel.isFavouriteProduct(product.id) ? ImageNames.favorite_fill  : ImageNames.favorite_stroke)
                 }
                 .padding(.trailing, 4)
             }
