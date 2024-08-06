@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct SampleData {
+    static let userProfilePhoto = "https://github.com/developer-chandrasekhar/develop-sample-images/blob/main/notification-image.png"
+    static let userPhoneNumber = "123456789"
+}
+
 @MainActor
 final class CreateAccountViewModel: ObservableObject {
    
@@ -40,8 +45,9 @@ extension CreateAccountViewModel {
     func createAccountWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do  {
-           let user = try await authService.createUser(email: email, password: password)
-            let userModel = try await userService.createUserProfile(user: UserModel(userId: user.uid, email: user.email, phoneNumber: "123456789", photoUrl: "https://github.com/developer-chandrasekhar/develop-sample-images/blob/main/notification-image.png"))
+           let firUser = try await authService.createUser(email: email, password: password)
+            let user = try await userService.createUserProfile(user: UserModel(userId: firUser.uid, email: firUser.email, phoneNumber: SampleData.userPhoneNumber, photoUrl: SampleData.userProfilePhoto))
+            SessionManager.shared.user = user
             return true
         }
         catch {

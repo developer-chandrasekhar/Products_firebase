@@ -22,7 +22,6 @@ struct CreateAccountView: View {
     @State var showErrorAlert = false
     @State var goToHomeScreen = false
     
-    
     var body: some View {
         VStack {
             Image("login")

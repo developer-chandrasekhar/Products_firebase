@@ -35,9 +35,12 @@ final class LoginViewModel: ObservableObject {
 
     private var authStateHandler: AuthStateDidChangeListenerHandle?
     private let authService: AuthService
+    private let userService: UserService
+
     
-    init(authService: AuthService = AuthWebService()) {
+    init(authService: AuthService = AuthWebService(), userService: UserService = UserWebService()) {
         self.authService = authService
+        self.userService = userService
         localFlowValidation()
     }
     
@@ -56,7 +59,9 @@ extension LoginViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do {
-            let user = try await authService.signInUser(email: email, password: password)
+            let firUser = try await authService.signInUser(email: email, password: password)
+            let user = try await userService.getUserProfile(userId: firUser.uid)
+            SessionManager.shared.user = user
             return true
         }
         catch  {

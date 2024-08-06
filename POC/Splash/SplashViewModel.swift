@@ -35,9 +35,10 @@ extension SplashViewModel {
         
         Task {
             do {
-                let user = try await authService.validateUser()
-                if let user {
-                   let user = try await userService.getUserProfile(userId: user.uid)
+                let firUser = try await authService.validateUser()
+                if let firUser {
+                    let user = try await userService.getUserProfile(userId: firUser.uid)
+                    SessionManager.shared.user = user
                     root(.home)
                 }
                 else {
