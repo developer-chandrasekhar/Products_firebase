@@ -27,8 +27,8 @@ struct POCApp: App {
                 switch appRoot.currentRoot {
                 case .splash: SplashView()
                 case .login: LoginView(viewModel: LoginViewModel())
-                case .signUp: EmptyView()
-                case .home: EmptyView()
+                case .signUp: CreateAccountView()
+                case .home: ProductsHomeView(viewModel: ProductsHomeViewModel())
                 }
             }
         }

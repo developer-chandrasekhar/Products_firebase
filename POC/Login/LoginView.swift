@@ -25,10 +25,11 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Image("login")
+                Image(ImageNames.logo_large)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 250)
+                    .frame(height: 200)
+                    .padding(.bottom, 50)
                 Text("Login")
                     .font(.largeTitle)
                     .fontWeight(.bold)

@@ -18,7 +18,7 @@ struct SplashView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image("login")
+            Image(ImageNames.logo_large)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 250)
@@ -30,7 +30,7 @@ struct SplashView: View {
                             .repeatForever(autoreverses: true)
                     ) {
                         self.logoScale = 0.8
-                        self.logoOpacity = 0.7
+                        self.logoOpacity = 0.9
                     }
                 }
             

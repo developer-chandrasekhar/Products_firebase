@@ -8,6 +8,11 @@
 import Foundation
 import FirebaseFirestore
 
+enum FirCollectionNames: String {
+    case users
+    case products
+}
+
 struct UserModel: Codable {
     
     let userId: String
@@ -57,7 +62,7 @@ protocol UserService {
 extension UserService {
     
     var userCollection: CollectionReference {
-        return Firestore.firestore().collection("users")
+        return Firestore.firestore().collection(FirCollectionNames.users.rawValue)
     }
     
     func userDocument(userId: String) -> DocumentReference {

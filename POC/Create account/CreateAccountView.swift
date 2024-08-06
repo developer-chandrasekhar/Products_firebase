@@ -24,10 +24,11 @@ struct CreateAccountView: View {
     
     var body: some View {
         VStack {
-            Image("login")
+            Image(ImageNames.logo_large)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 250)
+                .frame(height: 200)
+                .padding(.bottom, 50)
             Text("Create Account")
                 .font(.largeTitle)
                 .fontWeight(.bold)

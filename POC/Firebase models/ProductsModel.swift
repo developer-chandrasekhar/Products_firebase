@@ -7,6 +7,24 @@
 
 import Foundation
 
+struct ProductList: Codable {
+    let products: [ProductModel]
+    
+    enum CodingKeys: String, CodingKey {
+        case products
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        products = try container.decode([ProductModel].self, forKey: .products)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(products, forKey: .products)
+    }
+}
+
 struct ProductModel: Codable {
     let id: Int
     let title: String
@@ -18,10 +36,12 @@ struct ProductModel: Codable {
     let stock: Int?
     let rating: Double?
     let availableLocation: String?
+    var createdDate: Date?
     
     enum CodingKeys: String, CodingKey {
         case id, title, description, category, price, images, thumbnail, stock, rating
         case availableLocation = "available_location"
+        case createdDate = "crated_date"
     }
     
     // Decode from JSON
@@ -37,6 +57,7 @@ struct ProductModel: Codable {
         stock = try container.decodeIfPresent(Int.self, forKey: .stock)
         rating = try container.decodeIfPresent(Double.self, forKey: .rating)
         availableLocation = try container.decodeIfPresent(String.self, forKey: .availableLocation)
+        createdDate = try container.decodeIfPresent(Date.self, forKey: .createdDate)
     }
     
     // Encode to JSON
@@ -52,6 +73,13 @@ struct ProductModel: Codable {
         try container.encode(stock, forKey: .stock)
         try container.encode(rating, forKey: .rating)
         try container.encode(availableLocation, forKey: .availableLocation)
+        try container.encode(createdDate, forKey: .createdDate)
+    }
+}
+
+extension ProductModel {
+    mutating func setDate() {
+        self.createdDate = Date()
     }
 }
 
